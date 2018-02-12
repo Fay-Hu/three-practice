@@ -40,6 +40,9 @@ module.exports = {
     }]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      THREE: "three"
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
