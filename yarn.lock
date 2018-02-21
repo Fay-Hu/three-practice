@@ -1740,9 +1740,9 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dat.gui@^0.7.0:
-  version "0.7.0"
-  resolved "http://registry.npm.taobao.org/dat.gui/download/dat.gui-0.7.0.tgz#877d9a1a1fb75e4963864d7d36e4ff122776fb64"
+dat.gui@^0.7.1:
+  version "0.7.1"
+  resolved "http://registry.npm.taobao.org/dat.gui/download/dat.gui-0.7.1.tgz#ff3f27c1029289840700f463748ec26df6269a70"
 
 date-fns@^1.23.0:
   version "1.29.0"

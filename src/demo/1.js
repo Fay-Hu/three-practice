@@ -3,6 +3,7 @@ import OrbitControls from '@/lib/tools/orbitControls'
 import dat from 'dat.gui'
 
 const scene = new THREE.Scene()
+
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -27,9 +28,8 @@ class Cube {
     this.mesh.rotation.y = 5
   }
   update (v) {
-    var geometry = new THREE.BoxGeometry(v, this.height, this.depth)
-    var material = new THREE.MeshBasicMaterial({ color: 0xffffff })
-    this.mesh = new THREE.Mesh(geometry, material)
+    this.mesh.geometry.dispose()
+    this.mesh.geometry = new THREE.BoxGeometry(this.width, this.height, this.depth)
   }
 }
 
@@ -53,8 +53,8 @@ var orbit = new OrbitControls(camera, renderer.domElement)
 console.log(orbit)
 
 const gui = new dat.GUI()
-console.log(cube)
-gui.add(cube, 'width', 1, 100).onChange(cube.update)
+
+gui.add(cube, 'width', 1, 10).onChange(cube.update.bind(cube))
 
 var render = function () {
   requestAnimationFrame(render)
