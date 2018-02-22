@@ -1,20 +1,5 @@
 import * as THREE from 'three'
-import OrbitControls from '@/lib/tools/orbitControls'
-import dat from 'dat.gui'
-
-const scene = new THREE.Scene()
-
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-)
-
-const renderer = new THREE.WebGLRenderer({ antialias: true })
-renderer.setSize(window.innerWidth, window.innerHeight)
-renderer.setPixelRatio(window.devicePixelRatio)
-document.body.appendChild(renderer.domElement)
+import Stage from '@/components/stage'
 
 class Cube {
   constructor (width = 1, height = 1, depth = 1) {
@@ -34,30 +19,7 @@ class Cube {
 }
 
 const cube = new Cube()
-scene.add(cube.mesh)
+const stage = new Stage()
 
-camera.position.z = 5
-
-renderer.render(scene, camera)
-window.addEventListener(
-  'resize',
-  function () {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-  },
-  false
-)
-
-var orbit = new OrbitControls(camera, renderer.domElement)
-console.log(orbit)
-
-const gui = new dat.GUI()
-
-gui.add(cube, 'width', 1, 10).onChange(cube.update.bind(cube))
-
-var render = function () {
-  requestAnimationFrame(render)
-  renderer.render(scene, camera)
-}
-render()
+stage.scene.add(cube.mesh)
+stage.gui.add(cube, 'width', 1, 10).onChange(cube.update.bind(cube))
