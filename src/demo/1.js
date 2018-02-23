@@ -8,7 +8,7 @@ class Cube {
     this.depth = depth
 
     var geometry = new THREE.BoxGeometry(this.width, this.height, this.depth)
-    var material = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    var material = new THREE.MeshBasicMaterial({color: 0x2194CE})
     this.mesh = new THREE.Mesh(geometry, material)
     this.mesh.rotation.y = 5
   }
@@ -22,4 +22,6 @@ const cube = new Cube()
 const stage = new Stage()
 
 stage.scene.add(cube.mesh)
+var ambientLight = new THREE.AmbientLight(0xffffff)
+stage.scene.add(ambientLight)
 stage.gui.add(cube, 'width', 1, 10).onChange(cube.update.bind(cube))
