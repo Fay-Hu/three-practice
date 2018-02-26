@@ -20,7 +20,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     inline: true,
     hot: true,
     open: true,
-    useLocalIp: false
+    useLocalIp: false,
+    host: "127.0.0.1"
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
