@@ -10,8 +10,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: false,
   plugins: [
     new CleanWebpackPlugin(
-      ['../dist'], {
-        root: __dirname,
+      ['dist'], {
+        root: path.resolve(__dirname,'../'),
         verbose: true,
         dry: true
       }

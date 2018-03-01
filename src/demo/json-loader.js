@@ -1,15 +1,17 @@
 import * as THREE from 'three'
 import Stage from '@/components/stage'
 
-const stage = new Stage()
-const scene = stage.scene
-
-var loader = new THREE.JSONLoader()
+const 
+  stage = new Stage(),
+  scene = stage.scene,
+  loader = new THREE.JSONLoader()
 
 // 加载一个资源
 loader.load('static/models/curve.json', (geometry, materials) => {
-  var material = new THREE.MultiMaterial(materials)
-  var object = new THREE.Mesh(geometry, material)
+  const 
+    material = new THREE.MultiMaterial(materials),
+    object = new THREE.Mesh(geometry, material)
+
   scene.add(object)
 })
 

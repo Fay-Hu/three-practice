@@ -21,9 +21,9 @@ export default class Stage {
 
     this.initRender()
 
-    // TODO 生产环境应去掉helper
+    // 生产环境应去掉helper
     this.initHelper()
-    this.AddAdaption()
+    this.addAdaption()
 
     if (autoRender) {
       this.render()
@@ -78,7 +78,7 @@ export default class Stage {
   /**
    * 添加窗口变化自适应监听
    */
-  AddAdaption() {
+  addAdaption() {
     window
       .addEventListener('resize', () => {
         this.camera.aspect = window.innerWidth / window.innerHeight
