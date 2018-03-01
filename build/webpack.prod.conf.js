@@ -4,10 +4,18 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var CompressionWebpackPlugin = require('compression-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 var webpackConfig = merge(baseWebpackConfig, {
   devtool: false,
   plugins: [
+    new CleanWebpackPlugin(
+      ['../dist'], {
+        root: __dirname,
+        verbose: true,
+        dry: true
+      }
+    ),
     new webpack.optimize.UglifyJsPlugin({
       compress:{
         warnings: false,

@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const resolve = (dir) => {
   return path.join(__dirname, dir)
@@ -64,16 +63,9 @@ module.exports = {
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new CopyWebpackPlugin([{
-      from: resolve('../static'),
-      to: resolve('dist/static'),
+      from: resolve('../static/'),
+      to: path.resolve(__dirname, '../dist/static'),
       ignore: ['.*']
-    }]),
-    new CleanWebpackPlugin(
-      ['dist/*.hot-update.js', 'dist/*.hot-update.json', ], {
-        root: __dirname,
-        verbose: true,
-        dry: false
-      }
-    )
+    }])
   ]
 }
